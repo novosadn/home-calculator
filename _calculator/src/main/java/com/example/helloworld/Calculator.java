@@ -8,26 +8,24 @@ public class Calculator {
         Scanner reader = new Scanner(System.in);
         System.out.println("Enter a first number: ");
         double n = reader.nextDouble();
-        System.out.println("What action would You like to do? 1)+; 2)-; 3)*; 4)/; 5)square");
-        int action = reader.nextInt();
-        if (action != 5) {
+        System.out.println("What action would You like to do? +; -; *; /; ^");
+        String action = reader.next();
+        if (!action.equals("^")) {
             System.out.println("Enter the second number: ");
             double m = reader.nextDouble();
-
             reader.close();
 
-            double sum = n + m;
-            double diff = n - m;
-            double divide = n / m;
-            double prod = n * m;
-
-            if (action == 1) {
+            if (action.equals("+")) {
+                double sum = n + m;
                 System.out.println("The sum is: " + sum);
-            } else if (action == 2) {
+            } else if (action.equals("-")) {
+                double diff = n - m;
                 System.out.println("The difference is:" + diff);
-            } else if (action == 3) {
+            } else if (action.equals("*")) {
+                double prod = n * m;
                 System.out.println("The product is: " + prod);
-            } else if (action == 4) {
+            } else if (action.equals("/")) {
+                double divide = n / m;
                 System.out.println("The division is: " + divide);
             }
             else {
