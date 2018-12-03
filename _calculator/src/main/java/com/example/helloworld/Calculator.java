@@ -8,33 +8,34 @@ public class Calculator {
         Scanner reader = new Scanner(System.in);
         System.out.println("Enter a first number: ");
         double n = reader.nextDouble();
-        System.out.println("What action would You like to do? +; -; *; /; ^");
-        String action = reader.next();
-        if (!action.equals("^")) {
+        System.out.println("What action would You like to do? + - * / ^");
+        String chosenAction = reader.next();
+        Actions action = new Actions();
+        if (!chosenAction.equals("^")) {
             System.out.println("Enter the second number: ");
             double m = reader.nextDouble();
             reader.close();
 
-            if (action.equals("+")) {
-                double sum = n + m;
-                System.out.println("The sum is: " + sum);
-            } else if (action.equals("-")) {
-                double diff = n - m;
-                System.out.println("The difference is:" + diff);
-            } else if (action.equals("*")) {
-                double prod = n * m;
-                System.out.println("The product is: " + prod);
-            } else if (action.equals("/")) {
-                double divide = n / m;
-                System.out.println("The division is: " + divide);
-            }
-            else {
-                System.out.println("Wrong action is selected:");
+            switch (chosenAction) {
+                case "+":
+                    action.sum(n, m);
+                    break;
+                case "-":
+                    action.diff(n, m);
+                    break;
+                case "*":
+                    action.prod(n, m);
+                    break;
+                case "/":
+                    action.divide(n, m);
+                    break;
+                default:
+                    System.out.println("Wrong action is selected:");
+                    break;
             }
         }
         else {
-            System.out.println("The sqr is: " + n*n);
+            action.sqr(n);
         }
-
     }
 }
