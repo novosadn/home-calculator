@@ -1,41 +1,27 @@
 package com.example.calculator;
 
+import com.example.calculator.ActionTypes.SquareAction;
+
 import java.util.Scanner;
 
 public class Calculator {
     public static void main(String[] args) {
         System.out.println("Welcome to simple Calculator. Please enter 2 numbers and select one of the action");
         Scanner reader = new Scanner(System.in);
-        System.out.println("Enter a first number: ");
+        System.out.print("Enter a first number: ");
         double n = reader.nextDouble();
-        System.out.println("What action would You like to do? + - * / ^");
+        System.out.print("What action would You like to do? + - * / ^: ");
         String chosenAction = reader.next();
-        Actions action = new Actions();
+        ActionCaller action = new ActionCaller();
+        SquareAction square = new SquareAction();
         if (!chosenAction.equals("^")) {
-            System.out.println("Enter the second number: ");
+            System.out.print("Enter the second number: ");
             double m = reader.nextDouble();
             reader.close();
-
-            switch (chosenAction) {
-                case "+":
-                    action.sum(n, m);
-                    break;
-                case "-":
-                    action.diff(n, m);
-                    break;
-                case "*":
-                    action.prod(n, m);
-                    break;
-                case "/":
-                    action.divide(n, m);
-                    break;
-                default:
-                    System.out.println("Wrong action is selected:");
-                    break;
-            }
+            action.actionCaller(chosenAction, n, m);
         }
         else {
-            action.sqr(n);
+            square.sqr(n);
         }
     }
 }
