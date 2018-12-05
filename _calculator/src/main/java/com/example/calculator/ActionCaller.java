@@ -11,8 +11,6 @@ class ActionCaller {
     private DiffAction diff = new DiffAction();
 
     void actionCaller (String action, double n, double m) {
-        if (!action.equals("^")) {
-            System.out.println("Enter the second number: ");
 
             switch (action) {
                 case "+":
@@ -33,5 +31,3 @@ class ActionCaller {
             }
         }
     }
-}
-//Interfaces, jUnit, executors for each action methods, ( )!!!
